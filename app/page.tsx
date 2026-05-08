@@ -6,6 +6,11 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openEntry, setOpenEntry] = useState<number | null>(null);
   const toggleEntry = (i: number) => setOpenEntry(prev => prev === i ? null : i);
+  useEffect(() => {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  }, []);
+
   const heroLineRef = useRef<HTMLHeadingElement>(null);
   const heroInnerRef = useRef<HTMLDivElement>(null);
   const cursorDotRef = useRef<HTMLDivElement>(null);
